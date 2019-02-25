@@ -5,6 +5,8 @@ import { PostCreateComponent } from './posts/post-create/post-create.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AuthGuard } from './auth/auth.guard';
+import { TeamsCreateComponent } from './teams/teams-create/teams-create.component';
+import { TeamListComponent } from './teams/team-lists/team-list.component';
 
 
 const routes: Routes = [
@@ -12,7 +14,9 @@ const routes: Routes = [
   { path: 'create', component: PostCreateComponent, canActivate: [AuthGuard]},
   { path: 'edit/:postId', component: PostCreateComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent }
+  { path: 'signup', component: SignupComponent },
+  { path: 'teams', component: TeamListComponent },
+  { path: 'teams/create', component: TeamsCreateComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

@@ -1,9 +1,9 @@
 <mat-toolbar color="primary">
-  <span><a routerLink="">My Todo List</a></span>
+  <span><a routerLink="/teams">TallyRec</a></span>
   <span class="spacer"></span>
   <ul>
     <li *ngIf="userIsAuthenticated">
-      <a mat-button routerLink="create" routerLinkActive="mat-accent">New Post</a>
+      <a mat-button routerLink="teams/create" routerLinkActive="mat-accent">New Team</a>
     </li>
     <li *ngIf="!userIsAuthenticated">
       <a mat-button routerLink="login" routerLinkActive="mat-accent">Login</a>
