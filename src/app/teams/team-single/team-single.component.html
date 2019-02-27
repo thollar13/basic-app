@@ -1,0 +1,7 @@
+<h1>{{ team.name }}</h1>
+<img src="{{ team.imagePath }}" alt="">
+
+<mat-action-row *ngIf="userIsAuthenticated && userId == team.creator">
+  <a mat-button color="primary" [routerLink]="['/teams', team._id, 'edit']">Edit</a>
+  <!-- <button mat-button color="warn" (click)="onDelete(team.id)">Delete</button> -->
+</mat-action-row>

@@ -13,8 +13,9 @@ import { PostListComponent } from './posts/post-list/post-list.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AuthInterceptor } from './auth/auth.intercepter';
-import { TeamsCreateComponent } from './teams/teams-create/teams-create.component';
-import { TeamListComponent } from './teams/team-lists/team-list.component';
+import { TeamsCreateComponent } from './teams/team-create/team-create.component';
+import { TeamListComponent } from './teams/teams-list/teams-list.component';
+import { TeamSingleComponent } from './teams/team-single/team-single.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { TeamListComponent } from './teams/team-lists/team-list.component';
     LoginComponent,
     SignupComponent,
     TeamsCreateComponent,
-    TeamListComponent
+    TeamListComponent,
+    TeamSingleComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,7 @@ import { TeamListComponent } from './teams/team-lists/team-list.component';
     MatExpansionModule,
     MatProgressSpinnerModule,
     MatPaginatorModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
