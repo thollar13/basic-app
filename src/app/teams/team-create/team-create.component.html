@@ -1,3 +1,6 @@
+<h4 *ngIf="this.mode == 'edit'">Edit</h4>
+<h4 *ngIf="this.mode !== 'edit'">Create</h4>
+
 <mat-card>
     <mat-spinner *ngIf="isLoading"></mat-spinner>
     <form [formGroup]="form" (submit)="onSaveTeam()" *ngIf="!isLoading">

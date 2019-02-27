@@ -21,6 +21,7 @@ const routes: Routes = [
   { path: 'teams', component: TeamListComponent },
   { path: 'teams/create', component: TeamsCreateComponent, canActivate: [AuthGuard] },
   { path: 'teams/:id', component: TeamSingleComponent, canActivate: [AuthGuard] },
+  { path: 'teams/:id/edit', component: TeamsCreateComponent, canActivate: [AuthGuard], data: { mode: 'edit' }},
 
 ];
 

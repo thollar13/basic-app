@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 import { TeamsService } from '../teams.service';
 import { Team } from '../team.model';
@@ -18,10 +18,14 @@ export class TeamsCreateComponent implements OnInit {
   isLoading = false;
   form: FormGroup;
   imagePreview: string;
-  private mode = 'create';
+  mode = 'create';
   private teamId: string;
 
-  constructor(public teamService: TeamsService, public route: ActivatedRoute) {}
+  constructor(
+    public teamService: TeamsService,
+    public route: ActivatedRoute,
+    private router: Router
+    ) {}
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -34,10 +38,10 @@ export class TeamsCreateComponent implements OnInit {
         asyncValidators: [mimeType]
       })
     });
+    this.mode = this.route.snapshot.data['mode'];
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
-      if (paramMap.has('teamId')) {
-        this.mode = 'edit';
-        this.teamId = paramMap.get('teamId');
+      if (paramMap.has('id') && this.mode === 'edit') {
+        this.teamId = paramMap.get('id');
         this.isLoading = true;
         this.teamService.getTeam(this.teamId).subscribe(teamData => {
           this.isLoading = false;

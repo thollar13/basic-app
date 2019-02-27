@@ -106,6 +106,7 @@ export class TeamsService {
     this.http
       .put('http://localhost:3000/api/teams/' + id, teamData)
       .subscribe(response => {
+        console.log(response);
         this.router.navigate(['/teams']);
       });
   }
