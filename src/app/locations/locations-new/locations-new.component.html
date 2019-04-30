@@ -1,0 +1,33 @@
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form [formGroup]="form" (submit)="onSavelocation()" *ngIf="!isLoading">
+    
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        formControlName="mId"
+        placeholder="Merchant ID">
+        <mat-error *ngIf="form.get('mId').invalid">Please enter location address</mat-error>
+    </mat-form-field>
+
+    <br>
+    
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        formControlName="accessToken"
+        placeholder="Access Token">
+        <mat-error *ngIf="form.get('accessToken').invalid">Please enter location address</mat-error>
+    </mat-form-field>
+
+    <br>
+
+    <button
+      mat-raised-button
+      type="submit">
+      Create Location
+    </button>
+  </form>
+</mat-card>
