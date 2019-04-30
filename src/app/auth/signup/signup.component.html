@@ -1,6 +1,59 @@
+<mat-toolbar>
+  <span class="back-btn">
+    <a routerLink="/login">
+        <i class="material-icons">arrow_back</i>
+    </a>
+  </span>
+  <span>Let's Get Started</span>
+</mat-toolbar>
+
+<!-- <div class="img">
+  <img src="/assets/images/poppos-logo-cream.png" alt="">
+</div> -->
+
 <mat-card>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
   <form (submit)="onSignup(signupForm)" #signupForm="ngForm" *ngIf="!isLoading">
+
+    <mat-form-field>
+      <input
+        matInput
+        ngModel
+        name="firstName"
+        type="text"
+        placeholder="First Name"
+        #firstName="ngModel"
+        required
+        >
+        <mat-error *ngIf="firstName.invalid">Please enter your first name</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        ngModel
+        name="lastName"
+        type="text"
+        placeholder="Last Lame"
+        #lastName="ngModel"
+        required
+        >
+        <mat-error *ngIf="lastName.invalid">Please enter your last name</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        ngModel
+        name="phoneNumber"
+        type="text"
+        placeholder="Phone Number"
+        #phoneNumber="ngModel"
+        required
+        >
+        <mat-error *ngIf="phoneNumber.invalid">Please enter a valid phone number</mat-error>
+    </mat-form-field>
+
     <mat-form-field>
       <input
         matInput
@@ -15,21 +68,21 @@
         <mat-error *ngIf="emailInput.invalid">Please enter a valid email</mat-error>
     </mat-form-field>
 
-      <mat-form-field>
-        <input
-        matInput
-        ngModel
-        name="password"
-        type="password"
-        placeholder="Password"
-        #passwordInput="ngModel"
-        required
-        >
-        <mat-error *ngIf="passwordInput.invalid">Please enter valid password</mat-error>
+    <mat-form-field>
+      <input
+      matInput
+      ngModel
+      name="password"
+      type="password"
+      placeholder="Password"
+      #passwordInput="ngModel"
+      required
+      >
+      <mat-error *ngIf="passwordInput.invalid">Please enter valid password</mat-error>
     </mat-form-field>
+
     <button
       mat-raised-button
-      color="accent"
       type="submit"
       *ngIf="!isLoading"
     >

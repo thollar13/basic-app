@@ -1,5 +1,6 @@
-main {
-  width: 80%;
-  margin: auto;
-  margin-top: 1rem;
+html {
+  background-image: url('/assets/images/paper-texture.jpg');
+  background-size: cover;
+  background-position: center;
 }
+

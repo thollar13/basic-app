@@ -1,39 +1,53 @@
-<mat-card>
-  <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <form (submit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="!isLoading">
-    <mat-form-field>
-      <input
-        matInput
-        ngModel
-        name="email"
-        type="email"
-        placeholder="E-mail"
-        #emailInput="ngModel"
-        required
-        email
-        >
-        <mat-error *ngIf="emailInput.invalid">Please enter a valid email</mat-error>
-    </mat-form-field>
+<div class="container">
 
-      <mat-form-field>
-        <input
-        matInput
-        ngModel
-        name="password"
-        type="password"
-        placeholder="Password"
-        #passwordInput="ngModel"
-        required
-        >
-        <mat-error *ngIf="passwordInput.invalid">Please enter valid password</mat-error>
-    </mat-form-field>
-    <button
-      mat-raised-button
-      color="accent"
-      type="submit"
-      *ngIf="!isLoading"
-    >
-      Login
-    </button>
-  </form>
-</mat-card>
+  <div class="login-wrap">
+
+    <div class="login-box">
+      <h4>Login to your account</h4>
+      <mat-card>
+        <mat-spinner *ngIf="isLoading"></mat-spinner>
+        <form (submit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="!isLoading">
+          <mat-form-field>
+            <input
+              matInput
+              ngModel
+              name="email"
+              type="email"
+              placeholder="E-mail"
+              #emailInput="ngModel"
+              required
+              email
+              >
+              <mat-error *ngIf="emailInput.invalid">Please enter a valid email</mat-error>
+          </mat-form-field>
+
+            <mat-form-field>
+              <input
+              matInput
+              ngModel
+              name="password"
+              type="password"
+              placeholder="Password"
+              #passwordInput="ngModel"
+              required
+              >
+              <mat-error *ngIf="passwordInput.invalid">Please enter valid password</mat-error>
+          </mat-form-field>
+          <button
+            type="submit"
+            *ngIf="!isLoading"
+          >
+            Sign In
+          </button>
+        </form>
+      </mat-card>  
+
+      <a routerLink="/signup" class="create-account">
+        Create Account
+      </a>
+
+    </div>
+
+  </div>
+  
+</div>

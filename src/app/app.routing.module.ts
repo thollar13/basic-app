@@ -1,27 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PostListComponent } from './posts/post-list/post-list.component';
-import { PostCreateComponent } from './posts/post-create/post-create.component';
+
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AuthGuard } from './auth/auth.guard';
-import { TeamsCreateComponent } from './teams/team-create/team-create.component';
-import { TeamListComponent } from './teams/teams-list/teams-list.component';
-import { TeamSingleComponent } from './teams/team-single/team-single.component';
+import { AuthDashboardComponent } from './auth/dashboard/dashboard.component';
 
+import { LocationsIndexComponent } from './locations/locations-index/locations-index.component';
+import { LocationsNewComponent } from './locations/locations-new/locations-new.component';
+import { LocationsShowComponent } from './locations/locations-show/locations-show.component';
 
 const routes: Routes = [
-  { path: '', component: PostListComponent },
-  { path: 'create', component: PostCreateComponent, canActivate: [AuthGuard]},
-  { path: 'edit/:postId', component: PostCreateComponent, canActivate: [AuthGuard] },
+  { path: '', component: LocationsIndexComponent },
+
+  //// LOCATIONS
+  { path: 'locations', component: LocationsIndexComponent },
+  { path: 'locations/new', component: LocationsNewComponent, canActivate: [AuthGuard]},
+  { path: 'locations/:id', component: LocationsShowComponent, canActivate: [AuthGuard]},
+  { path: 'locations/edit/:postId', component: LocationsNewComponent, canActivate: [AuthGuard] },
+
+  //// AUTH
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-
-  /// TEAMS
-  { path: 'teams', component: TeamListComponent },
-  { path: 'teams/create', component: TeamsCreateComponent, canActivate: [AuthGuard] },
-  { path: 'teams/:id', component: TeamSingleComponent, canActivate: [AuthGuard] },
-  { path: 'teams/:id/edit', component: TeamsCreateComponent, canActivate: [AuthGuard], data: { mode: 'edit' }},
 
 ];
 
