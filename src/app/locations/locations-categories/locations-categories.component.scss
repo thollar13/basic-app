@@ -9,22 +9,16 @@ table {
   }
 }
 
-.page-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.sync-button {
-  background: #EF3340;
-  color: white;
+.edit-item {
+  text-decoration: none;
+  color: gray;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: 5px 10px;
-  font-weight: 400;
   font-size: 12px;
+  letter-spacing: .5px;
+  i {
+    font-size: 12px;
+  }
   &:hover {
     cursor: pointer;
-    background: darken(#EF3340, 10%);
   }
 }

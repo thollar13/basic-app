@@ -15,7 +15,7 @@
     <tr *ngFor="let category of locationscategories">
       <td>{{category.name}}</td>
       <td>
-        <a (click)="editCategory(category._id)">
+        <a (click)="editCategory(category._id)" class="edit-item">
           <i class="material-icons">edit</i>
           Edit
         </a>

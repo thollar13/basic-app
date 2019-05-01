@@ -10,7 +10,7 @@ main {
 .container {
   position: relative;
 	max-width: 1200px;
-	margin: 0 auto;
+  margin: 0 auto;
 }
 
 .page-header {
@@ -33,5 +33,19 @@ table {
   }
   tr:nth-child(2n) {
     background: #f0f0f0;
+  }
+}
+
+.sync-button {
+  background: #EF3340;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 5px 10px;
+  font-weight: 400;
+  font-size: 12px;
+  &:hover {
+    cursor: pointer;
+    background: darken(#EF3340, 10%);
   }
 }
