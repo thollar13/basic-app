@@ -3,10 +3,18 @@
   <div class="container">
       <div class="locations-header__info">
           <p class="large">Manage Items</p>
-          <p class="small">{{location.name}} | Total Categories <span>50</span></p>
+          <p class="small" *ngIf=!isLoading>{{location.name}} | {{location.address}}, {{location.city}} {{location.state}}</p>
       </div>
 
-      <div class="locations-header__nav">
+      <div class="locations-header__nav" *ngIf=!isLoading>
+          <a
+          [routerLink]="['/locations/', this.locationId]"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact: true}"
+          (click)="viewChange('dashboard')"
+        >
+          <i class="material-icons">dashboard</i>Dashboard
+        </a>
         <a
           [routerLink]="['/locations/', this.locationId, 'categories']"
           [routerLinkActive]="['active']"
@@ -31,14 +39,6 @@
         >
           <i class="material-icons">payment</i>Orders
         </a>
-        <a
-          [routerLink]="['/locations/', this.locationId]"
-          [routerLinkActive]="['active']"
-          [routerLinkActiveOptions]="{exact: true}"
-          (click)="viewChange('dashboard')"
-        >
-          <i class="material-icons">dashboard</i>Dashboard
-        </a>
       </div>
   </div>
 
@@ -59,6 +59,7 @@
 
       <app-locations-categories
         *ngIf='view == "categories"'
+        [locationscategories] = this.locationCategories
       ></app-locations-categories>
 
       <app-locations-orders

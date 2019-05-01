@@ -111,4 +111,8 @@ export class LocationsService {
     return this.http.delete('http://localhost:3000/api/locations/' + locationId);
   }
 
+  getLocationCategories(mId: string) {
+    return this.http.get<{ message: string, categories: any }>('http://localhost:3000/api/categories?mid=' + mId);
+  }
+
 }

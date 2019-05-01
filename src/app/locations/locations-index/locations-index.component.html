@@ -1,39 +1,15 @@
-<table *ngIf="locations.length > 0 && !isLoading">
-  <thead>
-    <tr>
-      <td></td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let location of locations">
-      <td><a href="locations/{{location.id}}">{{location.name}}</a></td>
-    </tr>
-  </tbody>
-</table>
-
-  <!-- <mat-accordion multi="true" *ngIf="locations.length > 0 && !isLoading">
-    <mat-expansion-panel *ngFor="let location of locations">
-      <mat-expansion-panel-header>
-        <p>{{location.name}}</p>
-        <p>{{location.address}}</p>
-        <p>{{location.city}}</p>
-        <p>{{location.state}}</p>
-        <p>{{location.mId}}</p>
-        <p>{{location.accessToken}}</p>
-      </mat-expansion-panel-header>
-      <mat-action-row *ngIf="userIsAuthenticated && userId == location.creator">
-        <a mat-button color="primary" [routerLink]="['/edit', location.id]">Edit</a>
-        <button mat-button color="warn" (click)="onDelete(location.id)">Delete</button>
-      </mat-action-row>
-    </mat-expansion-panel>
-  </mat-accordion>
-  <mat-paginator
-    [length]="totalLocations"
-    [pageSize]="locationsPerPage"
-    [pageSizeOptions]="pageSizeOptions"
-    (page)="onChangedPage($event)"
-    *ngIf="locations.length > 0"
-  ></mat-paginator>
-  <p class="info-text mat-body-1" *ngIf="locations.length == 0 && !isLoading">No locations added yet!</p>
-</div> -->
-
+<div class="container">
+  <h1>Locations</h1>
+  <table *ngIf="locations.length > 0 && !isLoading">
+    <thead>
+      <tr>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let location of locations">
+        <td><a href="locations/{{location.id}}">{{location.name}}</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

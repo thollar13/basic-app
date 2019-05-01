@@ -8,3 +8,23 @@ table {
     background: #f0f0f0;
   }
 }
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sync-button {
+  background: #EF3340;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 5px 10px;
+  font-weight: 400;
+  font-size: 12px;
+  &:hover {
+    cursor: pointer;
+    background: darken(#EF3340, 10%);
+  }
+}

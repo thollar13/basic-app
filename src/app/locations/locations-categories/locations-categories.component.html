@@ -1,1 +1,25 @@
-<h1>Categories</h1>
+<div class="page-header">
+  <h1>Categories</h1>
+  <div class="sync-button">
+    <a (onclick)="syncCategories('mId')">Sync Categories</a>
+  </div>
+</div>
+
+
+<div class="container">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Options</th>
+    </tr>
+    <tr *ngFor="let category of locationscategories">
+      <td>{{category.name}}</td>
+      <td>
+        <a (click)="editCategory(category._id)">
+          <i class="material-icons">edit</i>
+          Edit
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>

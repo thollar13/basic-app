@@ -18,6 +18,7 @@ export class LocationsHeaderComponent implements OnInit, OnDestroy {
   location: Location;
   locationId: string;
   locationItems: any;
+  locationCategories: any;
   showLocationItems = false;
   showRoute = false;
 
@@ -28,6 +29,9 @@ export class LocationsHeaderComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    if(this.route.snapshot.firstChild) {
+      this.view = this.route.snapshot.children[0].url[0].path;
+    }
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
 
       if (paramMap.has('id')) {
@@ -35,7 +39,7 @@ export class LocationsHeaderComponent implements OnInit, OnDestroy {
         this.locationId = paramMap.get('id');
         this.locationsService.getLocation(this.locationId).subscribe(locationData => {
           this.isLoading = false;
-          this.view = 'dashboard';
+          // this.view = 'dashboard';
           this.location = {
             id: locationData._id,
             name: locationData.name,
@@ -49,6 +53,9 @@ export class LocationsHeaderComponent implements OnInit, OnDestroy {
           };
           this.itemsService.getLocationItems(this.location.mId).subscribe((result) => {
             this.locationItems = result.items;
+          });
+          this.locationsService.getLocationCategories(this.location.mId).subscribe((result) => {
+            this.locationCategories = result.categories;
           });
           this.isLoading = false;
         });

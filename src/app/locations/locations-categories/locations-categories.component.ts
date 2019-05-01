@@ -1,12 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-
-import { Subscription } from 'rxjs';
-import { AuthService } from 'src/app/auth/auth.service';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { LocationsService } from '../locations.service';
 import { Location } from '../locations.model';
-import { ItemsService } from 'src/app/items/items.service';
+
 
 
 @Component({
@@ -16,7 +12,7 @@ import { ItemsService } from 'src/app/items/items.service';
 })
 export class LocationsCategoriesComponent implements OnInit {
 
-  // @Input() locationsitems: any;
+  @Input() locationscategories: any;
 
   location: Location;
   isLoading = false;
@@ -32,4 +28,11 @@ export class LocationsCategoriesComponent implements OnInit {
 
   }
 
+  editCategory(id) {
+    console.log(id);
+  }
+
+  syncCategories(mId){
+    console.log(mId)
+  }
 }

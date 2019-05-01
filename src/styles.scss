@@ -12,3 +12,20 @@ main {
 	max-width: 1200px;
 	margin: 0 auto;
 }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  th  {
+    text-align: left;
+    padding: 10px;
+    background: #c0c0c0;
+  }
+  td {
+    padding: 10px;
+  }
+  tr:nth-child(2n) {
+    background: #f0f0f0;
+  }
+}
