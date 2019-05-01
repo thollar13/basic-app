@@ -31,6 +31,8 @@ export class LocationsHeaderComponent implements OnInit, OnDestroy {
   ngOnInit() {
     if(this.route.snapshot.firstChild) {
       this.view = this.route.snapshot.children[0].url[0].path;
+    } else {
+      this.view = 'dashboard';
     }
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
 
@@ -39,7 +41,6 @@ export class LocationsHeaderComponent implements OnInit, OnDestroy {
         this.locationId = paramMap.get('id');
         this.locationsService.getLocation(this.locationId).subscribe(locationData => {
           this.isLoading = false;
-          // this.view = 'dashboard';
           this.location = {
             id: locationData._id,
             name: locationData.name,

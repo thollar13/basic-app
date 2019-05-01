@@ -4,13 +4,19 @@ html, body { height: 100%; }
 body { margin: 0; font-family: 'Lato', sans-serif; }
 
 main {
-	padding-top: 150px;
+	padding-top: 75px;
 }
 
 .container {
   position: relative;
 	max-width: 1200px;
 	margin: 0 auto;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 table {
