@@ -7,14 +7,6 @@
       </div>
 
       <div class="locations-header__nav">
-          <a
-          [routerLink]="['/locations/', this.locationId]"
-          [routerLinkActive]="['active']"
-          [routerLinkActiveOptions]="{exact: true}"
-          (click)="viewChange('dashboard')"
-        >
-          <i class="material-icons">settings</i>Dashboard
-        </a>
         <a
           [routerLink]="['/locations/', this.locationId, 'categories']"
           [routerLinkActive]="['active']"
@@ -35,26 +27,46 @@
           [routerLink]="['/locations/', this.locationId, 'orders']"
           [routerLinkActive]="['active']"
           [routerLinkActiveOptions]="{exact: true}"
+          (click)="viewChange('orders')"
         >
           <i class="material-icons">payment</i>Orders
+        </a>
+        <a
+          [routerLink]="['/locations/', this.locationId]"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact: true}"
+          (click)="viewChange('dashboard')"
+        >
+          <i class="material-icons">dashboard</i>Dashboard
         </a>
       </div>
   </div>
 
 </div>
 
-<app-locations-dashboard
-  *ngIf='view == "dashboard"'
-></app-locations-dashboard>
+<div class="container">
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
 
-<app-locations-items
-  *ngIf='view == "items"'
-  [locationsitems] = this.locationItems
-></app-locations-items>
+    <div *ngIf=!isLoading>
+      <app-locations-dashboard
+        *ngIf='view == "dashboard"'
+      ></app-locations-dashboard>
 
-<app-locations-categories
-  *ngIf='view == "categories"'
-></app-locations-categories>
+      <app-locations-items
+        *ngIf='view == "items"'
+        [locationsitems] = this.locationItems
+      ></app-locations-items>
+
+      <app-locations-categories
+        *ngIf='view == "categories"'
+      ></app-locations-categories>
+
+      <app-locations-orders
+        *ngIf='view == "orders"'
+      ></app-locations-orders>
+    </div>
+</div>
+
 
 
 

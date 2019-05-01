@@ -12,13 +12,13 @@ import { Item } from 'src/app/items/items.model';
 
 @Component({
   selector: 'app-locations-dashboard',
-  templateUrl: './locations-show.component.html',
-  styleUrls: ['./locations-show.component.scss']
+  templateUrl: './locations-dashboard.component.html',
+  styleUrls: ['./locations-dashboard.component.scss']
 })
-export class LocationsShowComponent implements OnInit {
+export class LocationsDashboardComponent implements OnInit {
 
+  isLoading = true;
   location: Location;
-  isLoading = false;
   userIsAuthenticated = false;
   userId: string;
   locationId: string;
@@ -34,8 +34,8 @@ export class LocationsShowComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log("hitting show")
-    this.isLoading = true;
+
+    this.isLoading = false;
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('id')) {
         this.locationId = paramMap.get('id');

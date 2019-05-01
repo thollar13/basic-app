@@ -1,18 +1,15 @@
-<div class="container">
-  <mat-spinner *ngIf="isLoading"></mat-spinner>
-
-  <table *ngIf="locations.length > 0 && !isLoading">
-    <thead>
-      <tr>
-        <td></td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let location of locations">
-        <td><a href="locations/{{location.id}}">{{location.name}}</a></td>
-      </tr>
-    </tbody>
-  </table>
+<table *ngIf="locations.length > 0 && !isLoading">
+  <thead>
+    <tr>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let location of locations">
+      <td><a href="locations/{{location.id}}">{{location.name}}</a></td>
+    </tr>
+  </tbody>
+</table>
 
   <!-- <mat-accordion multi="true" *ngIf="locations.length > 0 && !isLoading">
     <mat-expansion-panel *ngFor="let location of locations">
@@ -40,4 +37,3 @@
   <p class="info-text mat-body-1" *ngIf="locations.length == 0 && !isLoading">No locations added yet!</p>
 </div> -->
 
-<a routerLink="/locations/create">Add Location</a>

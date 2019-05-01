@@ -13,12 +13,12 @@ import { Location } from '../locations.model';
 export class LocationsHeaderComponent implements OnInit, OnDestroy {
 
   view: string;
+  isLoading = true;
 
   location: Location;
   locationId: string;
   locationItems: any;
   showLocationItems = false;
-  isLoading = false;
   showRoute = false;
 
   constructor(
@@ -28,7 +28,6 @@ export class LocationsHeaderComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.isLoading = true;
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
 
       if (paramMap.has('id')) {
@@ -51,6 +50,7 @@ export class LocationsHeaderComponent implements OnInit, OnDestroy {
           this.itemsService.getLocationItems(this.location.mId).subscribe((result) => {
             this.locationItems = result.items;
           });
+          this.isLoading = false;
         });
 
       }
