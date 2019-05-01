@@ -1,7 +1,7 @@
 <header>
 
-  <img src="../../../assets/images/poppos-logo-cream.png" alt="" class="header-logo">    
-  
+  <img src="../../../assets/images/poppos-logo-cream.png" alt="" class="header-logo">
+
   <ul class="header-nav">
     <li *ngIf="!userIsAuthenticated">
       <a routerLink="login">Login</a>
@@ -10,11 +10,11 @@
       <a routerLink="signup">Signup</a>
     </li>
     <li *ngIf="userIsAuthenticated">
-      <a routerLink="/locations">Locations</a>
+      <a routerLink="/">Locations</a>
     </li>
     <li *ngIf="userIsAuthenticated">
       <a (click)="onLogout()">Logout</a>
     </li>
   </ul>
-  
+
 </header>

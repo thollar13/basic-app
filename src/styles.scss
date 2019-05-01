@@ -1,16 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: 'Roboto', sans-serif; }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: 'Roboto', sans-serif; }
+body { margin: 0; font-family: 'Lato', sans-serif; }
 
 main {
-	padding-top: 75px;
+	padding-top: 150px;
 }
 
 .container {
+  position: relative;
 	max-width: 1200px;
 	margin: 0 auto;
 }

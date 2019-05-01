@@ -9,24 +9,35 @@ import { AuthDashboardComponent } from './auth/dashboard/dashboard.component';
 import { LocationsIndexComponent } from './locations/locations-index/locations-index.component';
 import { LocationsNewComponent } from './locations/locations-new/locations-new.component';
 import { LocationsShowComponent } from './locations/locations-show/locations-show.component';
+import { LocationsItemsComponent } from './locations/locations-items/locations-items.component';
+import { LocationsHeaderComponent } from './locations/locations-header/locations-header.component';
 
 const routes: Routes = [
   { path: '', component: LocationsIndexComponent },
 
   //// LOCATIONS
-  { path: 'locations', component: LocationsIndexComponent },
-  { path: 'locations/new', component: LocationsNewComponent, canActivate: [AuthGuard]},
-  { path: 'locations/:id', component: LocationsShowComponent, canActivate: [AuthGuard]},
-  { path: 'locations/edit/:postId', component: LocationsNewComponent, canActivate: [AuthGuard] },
+  {
+    path: 'locations/new',
+    component: LocationsNewComponent,
+    canActivate: [AuthGuard]
+  },
 
   //// AUTH
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'signup',
+    component: SignupComponent
+  },
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes)
+  ],
   exports: [RouterModule],
   providers: [AuthGuard]
 })

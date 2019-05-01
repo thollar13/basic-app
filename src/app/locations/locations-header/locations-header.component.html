@@ -1,0 +1,60 @@
+<div class="locations-header">
+
+  <div class="container">
+      <div class="locations-header__info">
+          <p class="large">Manage Items</p>
+          <p class="small">{{location.name}} | Total Categories <span>50</span></p>
+      </div>
+
+      <div class="locations-header__nav">
+          <a
+          [routerLink]="['/locations/', this.locationId]"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact: true}"
+          (click)="viewChange('dashboard')"
+        >
+          <i class="material-icons">settings</i>Dashboard
+        </a>
+        <a
+          [routerLink]="['/locations/', this.locationId, 'categories']"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact: true}"
+          (click)="viewChange('categories')"
+        >
+          <i class="material-icons">category</i>Categories
+        </a>
+        <a
+          [routerLink]="['/locations/', this.locationId, 'items']"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact: true}"
+          (click)="viewChange('items')"
+        >
+          <i class="material-icons">list</i>Items
+        </a>
+        <a
+          [routerLink]="['/locations/', this.locationId, 'orders']"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact: true}"
+        >
+          <i class="material-icons">payment</i>Orders
+        </a>
+      </div>
+  </div>
+
+</div>
+
+<app-locations-dashboard
+  *ngIf='view == "dashboard"'
+></app-locations-dashboard>
+
+<app-locations-items
+  *ngIf='view == "items"'
+  [locationsitems] = this.locationItems
+></app-locations-items>
+
+<app-locations-categories
+  *ngIf='view == "categories"'
+></app-locations-categories>
+
+
+

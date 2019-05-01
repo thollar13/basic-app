@@ -1,46 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-
-import { Subscription, Observable } from 'rxjs';
-import { AuthService } from 'src/app/auth/auth.service';
-
 import { LocationsService } from '../locations.service';
-import { Location } from '../locations.model';
 import { ItemsService } from 'src/app/items/items.service';
-import { Item } from 'src/app/items/items.model';
-
+import { Location } from '../locations.model';
 
 @Component({
-  selector: 'app-locations-dashboard',
-  templateUrl: './locations-show.component.html',
-  styleUrls: ['./locations-show.component.scss']
+  selector: 'app-locations-header',
+  templateUrl: './locations-header.component.html',
+  styleUrls: ['./locations-header.component.scss']
 })
-export class LocationsShowComponent implements OnInit {
+export class LocationsHeaderComponent implements OnInit, OnDestroy {
+
+  view: string;
 
   location: Location;
-  isLoading = false;
-  userIsAuthenticated = false;
-  userId: string;
   locationId: string;
   locationItems: any;
-  private locationsSub: Subscription;
-  private authStatusSub: Subscription;
+  showLocationItems = false;
+  isLoading = false;
+  showRoute = false;
 
   constructor(
-    public locationsService: LocationsService,
+    private locationsService: LocationsService,
     private itemsService: ItemsService,
-    private authService: AuthService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit() {
-    console.log("hitting show")
     this.isLoading = true;
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
+
       if (paramMap.has('id')) {
+
         this.locationId = paramMap.get('id');
         this.locationsService.getLocation(this.locationId).subscribe(locationData => {
           this.isLoading = false;
+          this.view = 'dashboard';
           this.location = {
             id: locationData._id,
             name: locationData.name,
@@ -52,14 +48,21 @@ export class LocationsShowComponent implements OnInit {
             accessToken: locationData.accessToken,
             creator: null,
           };
-
           this.itemsService.getLocationItems(this.location.mId).subscribe((result) => {
             this.locationItems = result.items;
           });
-
         });
+
       }
     });
+  }
+
+  viewChange(viewChange) {
+    this.view = viewChange;
+  }
+
+  ngOnDestroy() {
+    // this.authListenerSubs.unsubscribe();
   }
 
 }
