@@ -31,24 +31,24 @@ export class ItemsIndexComponent implements OnInit, OnDestroy{
 
   ngOnInit() {
 
-    this.isLoading = true;
-    this.userIsAuthenticated = this.authService.getIsAuth();
+    // this.isLoading = true;
+    // this.userIsAuthenticated = this.authService.getIsAuth();
 
-    this.authStatusSub = this.authService
-      .getAuthStatusListener()
-      .subscribe(isAuthenticated => {
-        this.userIsAuthenticated = isAuthenticated;
-        this.userId = this.authService.getUserId();
-      });
+    // this.authStatusSub = this.authService
+    //   .getAuthStatusListener()
+    //   .subscribe(isAuthenticated => {
+    //     this.userIsAuthenticated = isAuthenticated;
+    //     this.userId = this.authService.getUserId();
+    //   });
 
-    this.itemsService.getItems(this.itemsPerPage, this.currentPage);
-    this.userId = this.authService.getUserId();
-    this.itemsSub = this.itemsService.getItemsUpdateListener()
-      .subscribe((itemData: { items: Item[], itemCount: number }) =>  {
-        this.isLoading = false;
-        this.totalItems = itemData.itemCount;
-        this.items = itemData.items;
-      });
+    // this.itemsService.getItems(this.itemsPerPage, this.currentPage);
+    // this.userId = this.authService.getUserId();
+    // this.itemsSub = this.itemsService.getItemsUpdateListener()
+    //   .subscribe((itemData: { items: Item[], itemCount: number }) =>  {
+    //     this.isLoading = false;
+    //     this.totalItems = itemData.itemCount;
+    //     this.items = itemData.items;
+    //   });
 
   }
 
@@ -56,7 +56,7 @@ export class ItemsIndexComponent implements OnInit, OnDestroy{
     this.isLoading = true;
     this.currentPage = pageData.pageIndex + 1;
     this.itemsPerPage = pageData.pageSize;
-    this.itemsService.getItems(this.itemsPerPage, this.currentPage);
+    // this.itemsService.getItems(this.itemsPerPage, this.currentPage);
   }
 
   // onDelete(locationId: string) {

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { LocationsService } from '../locations.service';
 import { Location } from '../locations.model';
@@ -13,6 +13,8 @@ import { Location } from '../locations.model';
 export class LocationsCategoriesComponent implements OnInit {
 
   @Input() locationscategories: any;
+
+  @Output() toggleCategoryVisibility: EventEmitter<object> = new EventEmitter<object>();
 
   location: Location;
   isLoading = false;
@@ -34,5 +36,10 @@ export class LocationsCategoriesComponent implements OnInit {
 
   syncCategories(mId){
     console.log(mId)
+  }
+
+  toggleVisibility(id, event, cloverId) {
+    const lid = this.locationId;
+    this.toggleCategoryVisibility.emit({id, event, cloverId });
   }
 }

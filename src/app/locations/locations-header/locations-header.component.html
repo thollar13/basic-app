@@ -60,6 +60,7 @@
       <app-locations-categories
         *ngIf='view == "categories"'
         [locationscategories] = this.locationCategories
+        (toggleCategoryVisibility)="this.visibilityToggle($event)"
       ></app-locations-categories>
 
       <app-locations-orders

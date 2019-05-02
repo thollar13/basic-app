@@ -69,6 +69,15 @@ export class LocationsHeaderComponent implements OnInit, OnDestroy {
     this.view = viewChange;
   }
 
+  visibilityToggle(event) {
+    this.locationsService.toggleCategoryVisibility(event).subscribe((result) => {
+      if (result.message === 'success') {
+        this.locationCategories.find(o => o.cloverId === event.cloverId).isHidden = event.event.checked;
+      }
+
+    });
+  }
+
   ngOnDestroy() {
     // this.authListenerSubs.unsubscribe();
   }

@@ -10,11 +10,18 @@
   <table>
     <tr>
       <th>Name</th>
-      <th>Options</th>
+      <th class="text-center">Show/Hide</th>
+      <th class="text-center">Options</th>
     </tr>
     <tr *ngFor="let category of locationscategories">
       <td>{{category.name}}</td>
-      <td>
+      <td class="text-center">
+          <mat-slide-toggle
+            [checked]="(category.isHidden) ? true : false"
+            (change)="toggleVisibility(category._id, $event, category.cloverId)"
+          ></mat-slide-toggle>
+        </td>
+      <td class="text-center">
         <a (click)="editCategory(category._id)" class="edit-item">
           <i class="material-icons">edit</i>
           Edit

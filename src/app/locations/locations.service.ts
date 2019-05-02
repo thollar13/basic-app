@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Location } from './location.model';
+import { Location } from './locations.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -113,6 +113,18 @@ export class LocationsService {
 
   getLocationCategories(mId: string) {
     return this.http.get<{ message: string, categories: any }>('http://localhost:3000/api/categories?mid=' + mId);
+  }
+
+  toggleCategoryVisibility(event) {
+
+    const locationData = new URLSearchParams();
+    locationData.set('id', event.id);
+    locationData.set('isHidden', event.event.checked);
+
+    const options = {
+      headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+    };
+    return this.http.put<{message: string}>('http://localhost:3000/api/categories/togglevisibility', locationData.toString(), options);
   }
 
 }

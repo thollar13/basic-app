@@ -8,9 +8,6 @@ import { AuthDashboardComponent } from './auth/dashboard/dashboard.component';
 
 import { LocationsIndexComponent } from './locations/locations-index/locations-index.component';
 import { LocationsNewComponent } from './locations/locations-new/locations-new.component';
-import { LocationsShowComponent } from './locations/locations-show/locations-show.component';
-import { LocationsItemsComponent } from './locations/locations-items/locations-items.component';
-import { LocationsHeaderComponent } from './locations/locations-header/locations-header.component';
 
 const routes: Routes = [
   { path: '', component: LocationsIndexComponent },
