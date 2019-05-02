@@ -13,10 +13,11 @@ import { Location } from '../locations.model';
 export class LocationsCategoriesComponent implements OnInit {
 
   @Input() locationscategories: any;
+  @Input() location: Location;
 
   @Output() toggleCategoryVisibility: EventEmitter<object> = new EventEmitter<object>();
+  @Output() syncCategories: EventEmitter<object> = new EventEmitter<object>();
 
-  location: Location;
   isLoading = false;
   userIsAuthenticated = false;
   userId: string;
@@ -34,8 +35,9 @@ export class LocationsCategoriesComponent implements OnInit {
     console.log(id);
   }
 
-  syncCategories(mId){
-    console.log(mId)
+  syncLocationCategories(mId, accessToken){
+    console.log("hit")
+    this.syncCategories.emit({mId, accessToken});
   }
 
   toggleVisibility(id, event, cloverId) {

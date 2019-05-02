@@ -69,6 +69,16 @@ export class LocationsHeaderComponent implements OnInit, OnDestroy {
     this.view = viewChange;
   }
 
+  syncCategories(event) {
+    this.locationsService.syncCategories(event).subscribe((result) => {
+      if (result.message === 'success') {
+        console.log(result.categories)
+        //// go through each of the returned results and if it's not included in the array, include it.
+        this.locationCategories = result.categories;
+      }
+    });
+  }
+
   categoryVisibilityToggle(event) {
     this.locationsService.toggleCategoryVisibility(event).subscribe((result) => {
       if (result.message === 'success') {

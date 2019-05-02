@@ -115,28 +115,42 @@ export class LocationsService {
     return this.http.get<{ message: string, categories: any }>('http://localhost:3000/api/categories?mid=' + mId);
   }
 
-  toggleCategoryVisibility(event) {
-
-    const locationData = new URLSearchParams();
-    locationData.set('id', event.id);
-    locationData.set('isVisible', event.event.checked);
+  /// move this to category services
+  syncCategories(event) {
+    const categoryData = new URLSearchParams();
+    categoryData.set('mId', event.mId);
+    categoryData.set('access_token', event.accessToken);
 
     const options = {
       headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
     };
-    return this.http.put<{message: string}>('http://localhost:3000/api/categories/togglevisibility', locationData.toString(), options);
+    return this.http.post<{message: string, categories: object}>('http://localhost:3000/api/categories/sync', categoryData.toString(), options);
   }
 
-  toggleItemVisibility(event) {
+  /// move this to category services
+  toggleCategoryVisibility(event) {
 
-    const locationData = new URLSearchParams();
-    locationData.set('id', event.id);
-    locationData.set('isVisible', event.event.checked);
+    const categoryData = new URLSearchParams();
+    categoryData.set('id', event.id);
+    categoryData.set('isVisible', event.event.checked);
 
     const options = {
       headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
     };
-    return this.http.put<{message: string}>('http://localhost:3000/api/items/togglevisibility', locationData.toString(), options);
+    return this.http.put<{message: string}>('http://localhost:3000/api/categories/togglevisibility', categoryData.toString(), options);
+  }
+
+  /// move this to item services
+  toggleItemVisibility(event) {
+
+    const itemData = new URLSearchParams();
+    itemData.set('id', event.id);
+    itemData.set('isVisible', event.event.checked);
+
+    const options = {
+      headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+    };
+    return this.http.put<{message: string}>('http://localhost:3000/api/items/togglevisibility', itemData.toString(), options);
   }
 
 }
