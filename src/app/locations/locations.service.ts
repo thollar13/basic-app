@@ -119,12 +119,24 @@ export class LocationsService {
 
     const locationData = new URLSearchParams();
     locationData.set('id', event.id);
-    locationData.set('isHidden', event.event.checked);
+    locationData.set('isVisible', event.event.checked);
 
     const options = {
       headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
     };
     return this.http.put<{message: string}>('http://localhost:3000/api/categories/togglevisibility', locationData.toString(), options);
+  }
+
+  toggleItemVisibility(event) {
+
+    const locationData = new URLSearchParams();
+    locationData.set('id', event.id);
+    locationData.set('isVisible', event.event.checked);
+
+    const options = {
+      headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+    };
+    return this.http.put<{message: string}>('http://localhost:3000/api/items/togglevisibility', locationData.toString(), options);
   }
 
 }

@@ -39,7 +39,6 @@ export class LocationsCategoriesComponent implements OnInit {
   }
 
   toggleVisibility(id, event, cloverId) {
-    const lid = this.locationId;
     this.toggleCategoryVisibility.emit({id, event, cloverId });
   }
 }

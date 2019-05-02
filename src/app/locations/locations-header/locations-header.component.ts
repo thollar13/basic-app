@@ -69,12 +69,19 @@ export class LocationsHeaderComponent implements OnInit, OnDestroy {
     this.view = viewChange;
   }
 
-  visibilityToggle(event) {
+  categoryVisibilityToggle(event) {
     this.locationsService.toggleCategoryVisibility(event).subscribe((result) => {
       if (result.message === 'success') {
-        this.locationCategories.find(o => o.cloverId === event.cloverId).isHidden = event.event.checked;
+        this.locationCategories.find(o => o.cloverId === event.cloverId).isVisible = event.event.checked;
       }
+    });
+  }
 
+  itemVisibilityToggle(event) {
+    this.locationsService.toggleItemVisibility(event).subscribe((result) => {
+      if (result.message === 'success') {
+        this.locationItems.find(o => o.cloverId === event.cloverId).isVisible = event.event.checked;
+      }
     });
   }
 

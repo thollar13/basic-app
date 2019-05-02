@@ -12,7 +12,7 @@
       <th>Name</th>
       <th>Description</th>
       <th class="text-center">Price (USD)</th>
-      <th class="text-center">Show/Hide</th>
+      <th class="text-center">Enable</th>
       <th>Options</th>
     </tr>
     <tr *ngFor="let item of locationsitems">
@@ -21,7 +21,8 @@
       <td class="text-center">{{(item.price / 100).toFixed(2) | currency }}</td>
       <td class="text-center">
         <mat-slide-toggle
-          [checked]="(item.isHidden) ? false : true"
+          [checked]="(item.isVisible) ? true : false"
+          (change)="toggleVisibility(item._id, $event, item.cloverId)"
         ></mat-slide-toggle>
       </td>
       <td>

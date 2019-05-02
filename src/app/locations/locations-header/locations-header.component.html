@@ -55,12 +55,13 @@
       <app-locations-items
         *ngIf='view == "items"'
         [locationsitems] = this.locationItems
+        (toggleItemVisibility)="this.itemVisibilityToggle($event)"
       ></app-locations-items>
 
       <app-locations-categories
         *ngIf='view == "categories"'
         [locationscategories] = this.locationCategories
-        (toggleCategoryVisibility)="this.visibilityToggle($event)"
+        (toggleCategoryVisibility)="this.categoryVisibilityToggle($event)"
       ></app-locations-categories>
 
       <app-locations-orders

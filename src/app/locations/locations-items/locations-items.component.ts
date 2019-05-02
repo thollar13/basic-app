@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { LocationsService } from '../locations.service';
 import { Location } from '../locations.model';
@@ -12,6 +12,8 @@ import { Location } from '../locations.model';
 export class LocationsItemsComponent implements OnInit {
 
   @Input() locationsitems: any;
+
+  @Output() toggleItemVisibility: EventEmitter<object> = new EventEmitter<object>();
 
   location: Location;
   isLoading = false;
@@ -36,6 +38,10 @@ export class LocationsItemsComponent implements OnInit {
 
   editItem(id) {
     console.log(id);
+  }
+
+  toggleVisibility(id, event, cloverId) {
+    this.toggleItemVisibility.emit({id, event, cloverId });
   }
 
 }
