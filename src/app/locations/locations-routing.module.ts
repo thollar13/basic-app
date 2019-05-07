@@ -2,10 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../auth/auth.guard';
 
-import { LocationsHeaderComponent } from './locations-header/locations-header.component';
-import { LocationsItemsComponent } from './locations-items/locations-items.component';
 import { LocationsNewComponent } from './locations-new/locations-new.component';
-import { LocationsCategoriesComponent } from './locations-categories/locations-categories.component';
+
+import { ItemsIndexComponent } from '../items/items-index/items-index.component';
+import { ItemsEditComponent } from '../items/items-edit/items-edit.component';
+
+import { LocationsHeaderComponent } from '../header/locations-header/locations-header.component';
+import { CategoriesIndexComponent } from '../categories/categories-index/categories-index.component';
 
 const locationRoutes: Routes = [
   {
@@ -14,12 +17,17 @@ const locationRoutes: Routes = [
     children: [
       {
         path: 'items',
-        component: LocationsItemsComponent,
+        component: ItemsIndexComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'items/:id/edit',
+        component: ItemsEditComponent,
         canActivate: [AuthGuard]
       },
       {
         path: 'categories',
-        component: LocationsCategoriesComponent,
+        component: CategoriesIndexComponent,
         canActivate: [AuthGuard]
       },
       {

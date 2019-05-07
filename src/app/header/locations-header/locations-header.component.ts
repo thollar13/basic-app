@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { LocationsService } from '../locations.service';
+import { LocationsService } from '../../locations/locations.service';
 import { ItemsService } from 'src/app/items/items.service';
-import { Location } from '../locations.model';
+import { Location } from '../../locations/locations.model';
 
 @Component({
   selector: 'app-locations-header',

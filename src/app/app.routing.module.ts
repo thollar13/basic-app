@@ -4,13 +4,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AuthGuard } from './auth/auth.guard';
-import { AuthDashboardComponent } from './auth/dashboard/dashboard.component';
 
 import { LocationsIndexComponent } from './locations/locations-index/locations-index.component';
 import { LocationsNewComponent } from './locations/locations-new/locations-new.component';
 
 const routes: Routes = [
-  { path: '', component: LocationsIndexComponent },
+  { path: 'locations', component: LocationsIndexComponent },
 
   //// LOCATIONS
   {

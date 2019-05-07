@@ -3,16 +3,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { LocationsRoutingModule } from './locations-routing.module';
-import { LocationsItemsComponent } from './locations-items/locations-items.component';
-import { LocationsHeaderComponent } from './locations-header/locations-header.component';
 import { LocationsNewComponent } from './locations-new/locations-new.component';
 import { LocationsIndexComponent } from './locations-index/locations-index.component';
 import { LocationsDashboardComponent } from './locations-dashboard/locations-dashboard.component';
-import { LocationsCategoriesComponent } from './locations-categories/locations-categories.component';
-import { LocationsOrdersComponent } from './locations-orders/locations-orders.component';
+
 
 import { RouterModule } from '@angular/router';
 import { AngularMaterialModule } from '../angular-material.module';
+
+import { ItemsIndexComponent } from '../items/items-index/items-index.component';
+import { CategoriesIndexComponent } from '../categories/categories-index/categories-index.component';
+import { LocationsHeaderComponent } from '../header/locations-header/locations-header.component';
+import { OrdersIndexComponent } from '../orders/orders-index/orders-index.component';
+import { ItemsEditComponent } from '../items/items-edit/items-edit.component';
 
 
 @NgModule({
@@ -21,9 +24,10 @@ import { AngularMaterialModule } from '../angular-material.module';
     LocationsDashboardComponent,
     LocationsIndexComponent,
     LocationsNewComponent,
-    LocationsCategoriesComponent,
-    LocationsItemsComponent,
-    LocationsOrdersComponent
+    CategoriesIndexComponent,
+    ItemsIndexComponent,
+    ItemsEditComponent,
+    OrdersIndexComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +37,7 @@ import { AngularMaterialModule } from '../angular-material.module';
     LocationsRoutingModule
   ],
   exports: [
-    LocationsHeaderComponent
+    LocationsHeaderComponent,
   ]
 })
 

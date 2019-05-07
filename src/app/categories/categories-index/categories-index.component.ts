@@ -1,16 +1,16 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { LocationsService } from '../locations.service';
-import { Location } from '../locations.model';
+import { LocationsService } from '../../locations/locations.service';
+import { Location } from '../../locations/locations.model';
 
 
 
 @Component({
   selector: 'app-locations-categories',
-  templateUrl: './locations-categories.component.html',
-  styleUrls: ['./locations-categories.component.scss']
+  templateUrl: './categories-index.component.html',
+  styleUrls: ['./categories-index.component.scss']
 })
-export class LocationsCategoriesComponent implements OnInit {
+export class CategoriesIndexComponent implements OnInit {
 
   @Input() locationscategories: any;
   @Input() location: Location;
@@ -36,7 +36,6 @@ export class LocationsCategoriesComponent implements OnInit {
   }
 
   syncLocationCategories(mId, accessToken){
-    console.log("hit")
     this.syncCategories.emit({mId, accessToken});
   }
 

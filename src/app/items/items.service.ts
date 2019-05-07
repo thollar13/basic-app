@@ -38,7 +38,6 @@ export class ItemsService {
       };
       })))
       .subscribe((transformedItemsData) => {
-        console.log(transformedItemsData);
         this.items = transformedItemsData.items;
         this.itemsUpdated.next({
           items: [...this.items],
@@ -54,30 +53,5 @@ export class ItemsService {
   getLocationItems(mId: string) {
     return this.http.get<{ message: string, items: any }>('http://localhost:3000/api/items?mid=' + mId);
   }
-
-  // updateLocation(
-  //   id: string,
-  //   name: string,
-  //   address: string,
-  //   city: string,
-  //   state: string,
-  //   mId: string,
-  //   accessToken: string,
-  // ) {
-  //   let locationData: Location | FormData;
-  //   locationData = new FormData();
-  //   locationData.append('id', id);
-  //   locationData.append('name', name);
-  //   locationData.append('address', address);
-  //   locationData.append('city', city);
-  //   locationData.append('state', state);
-  //   locationData.append('mId', mId);
-  //   locationData.append('accessToken', accessToken);
-  //   this.http
-  //     .put('http://localhost:3000/api/locations/' + id, locationData)
-  //     .subscribe(response => {
-  //       this.router.navigate(['/']);
-  //     });
-  // }
 
 }

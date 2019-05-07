@@ -1,74 +1,52 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { Item } from '../items.model';
-import { ItemsService } from '../items.service';
-import { PageEvent } from '@angular/material';
-import { AuthService } from 'src/app/auth/auth.service';
+import { LocationsService } from '../../locations/locations.service';
+import { Location } from '../../locations/locations.model';
+import { ItemsEditComponent } from '../items-edit/items-edit.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
-  selector: 'app-locations',
-  templateUrl: './locations-index.component.html',
-  styleUrls: ['./locations-index.component.scss']
+  selector: 'app-locations-items',
+  templateUrl: './items-index.component.html',
+  styleUrls: ['./items-index.component.scss']
 })
-export class ItemsIndexComponent implements OnInit, OnDestroy{
 
-  items: Item[] = [];
+export class ItemsIndexComponent implements OnInit {
+
+  @Input() locationsitems: any;
+
+  @Output() toggleItemVisibility: EventEmitter<object> = new EventEmitter<object>();
+
+  location: Location;
   isLoading = false;
-  totalItems = 0;
-  itemsPerPage = 2;
-  currentPage = 1;
-  pageSizeOptions = [1, 2, 5, 10];
   userIsAuthenticated = false;
   userId: string;
-  private itemsSub: Subscription;
-  private authStatusSub: Subscription;
+  locationId: string;
 
   constructor(
-    public itemsService: ItemsService,
-    private authService: AuthService
+    public locationsService: LocationsService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
 
-    // this.isLoading = true;
-    // this.userIsAuthenticated = this.authService.getIsAuth();
-
-    // this.authStatusSub = this.authService
-    //   .getAuthStatusListener()
-    //   .subscribe(isAuthenticated => {
-    //     this.userIsAuthenticated = isAuthenticated;
-    //     this.userId = this.authService.getUserId();
-    //   });
-
-    // this.itemsService.getItems(this.itemsPerPage, this.currentPage);
-    // this.userId = this.authService.getUserId();
-    // this.itemsSub = this.itemsService.getItemsUpdateListener()
-    //   .subscribe((itemData: { items: Item[], itemCount: number }) =>  {
-    //     this.isLoading = false;
-    //     this.totalItems = itemData.itemCount;
-    //     this.items = itemData.items;
-    //   });
-
   }
 
-  onChangedPage(pageData: PageEvent) {
-    this.isLoading = true;
-    this.currentPage = pageData.pageIndex + 1;
-    this.itemsPerPage = pageData.pageSize;
-    // this.itemsService.getItems(this.itemsPerPage, this.currentPage);
+  editItem(id) {
+    console.log(id);
+    const dialogRef = this.dialog.open(ItemsEditComponent, {
+      width: '700px',
+      height: '500px',
+      data: { name: this.userId }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('dialog closed');
+    });
   }
 
-  // onDelete(locationId: string) {
-  //   this.isLoading = true;
-  //   this.itemsService.deleteItem(locationId).subscribe(() => {
-  //     this.itemsService.getItems(this.itemsPerPage, this.currentPage);
-  //   });
-  // }
-
-  ngOnDestroy() {
-    this.itemsSub.unsubscribe();
-    this.authStatusSub.unsubscribe();
+  toggleVisibility(id, event, cloverId) {
+    this.toggleItemVisibility.emit({id, event, cloverId });
   }
 
 }
